@@ -1,0 +1,296 @@
+:root {
+  --paper: #f4f2ec;
+  --paper-panel: #faf9f5;
+  --ink: #1a1f26;
+  --rule: #16202b;
+  --muted: #5a6472;
+  --border: #d8d3c7;
+  --hud-bg: #0b141d;
+  --hud-bg-dark: #0f1a24;
+  --hud-line: #16202b;
+  --cyan: #3fd0ff;
+  --cyan-soft: #7d8ea3;
+  --amber: #ffb84f;
+  --red: #ff4d4d;
+  --green: #7ee787;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+  --mono: "Consolas", "SFMono-Regular", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+
+a { color: inherit; }
+
+.masthead {
+  border-bottom: 3px double var(--rule);
+  background: var(--paper-panel);
+  padding: 18px 24px;
+}
+
+.masthead-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.masthead-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+#app {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+}
+
+/* buttons & inputs */
+
+.btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 8px 14px;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn.secondary { background: transparent; color: var(--ink); }
+
+input, select, textarea {
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--ink);
+}
+
+/* case list */
+
+.case-card-list { display: flex; flex-direction: column; gap: 10px; }
+
+.case-card {
+  border: 1px solid var(--border);
+  background: var(--paper-panel);
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.case-card:hover { border-color: var(--rule); }
+
+.case-card-title { font-weight: bold; }
+.case-card-meta { font-family: var(--sans); font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+.badge {
+  font-family: var(--sans);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.badge.ok { background: #e6f4ea; color: #1e7e34; }
+.badge.broken { background: #fdecea; color: #c0392b; }
+
+/* status ribbon (HUD-flavored) */
+
+.status-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--hud-bg-dark);
+  font-family: var(--mono);
+  font-size: 11px;
+  border-bottom: 1px solid rgba(255,255,255,0.13);
+}
+
+.status-ribbon .cell {
+  padding: 8px 18px;
+  color: var(--cyan);
+  border-right: 1px solid rgba(255,255,255,0.13);
+}
+
+.status-ribbon .cell .value { color: #e6f7ff; }
+.status-ribbon .cell .value.warn { color: var(--amber); }
+.status-ribbon .cell .value.ok { color: var(--green); }
+
+/* hud panel (flight path, telemetry) */
+
+.hud-panel {
+  background: var(--hud-bg);
+  border: 1px solid var(--hud-line);
+  border-radius: 2px;
+  padding: 14px;
+  color: #e6f7ff;
+}
+
+.hud-panel .hud-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  margin-bottom: 10px;
+}
+
+/* case-file panel (findings, structured record content) */
+
+.case-file-panel {
+  background: var(--paper-panel);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+}
+
+.case-file-panel h3 {
+  font-size: 13px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
+  margin: 0 0 10px;
+}
+
+/* step tracker */
+
+.step-tracker {
+  display: flex;
+  gap: 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  margin: 16px 0;
+}
+
+.step-tracker .step {
+  flex: 1;
+  text-align: center;
+  padding: 8px 4px;
+  border: 1px solid var(--border);
+  border-left: none;
+  background: var(--paper-panel);
+  color: var(--muted);
+}
+
+.step-tracker .step:first-child { border-left: 1px solid var(--border); }
+.step-tracker .step.done { background: #e6f4ea; color: #1e7e34; }
+.step-tracker .step.failed { background: #fdecea; color: #c0392b; }
+
+/* tabs */
+
+.tabs { display: flex; gap: 2px; margin: 20px 0 0; border-bottom: 2px solid var(--rule); }
+
+.tab-button {
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.tab-button.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 600; }
+
+.tab-panel { padding: 16px 0; }
+
+/* ledger table (custody log, timeline) */
+
+table.ledger {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+table.ledger th, table.ledger td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.ledger th {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+tr.anomaly td { background: #fdecea; }
+
+/* airspace incursions */
+
+.incursion {
+  border: 1px solid #e0a1a1;
+  background: #fdecec;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin: 8px 0;
+}
+
+.incursion .warn {
+  color: #8a5300;
+  background: #fff6e5;
+  border: 1px solid #f0c36d;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* carved media */
+
+.carved-thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.carved-thumb {
+  display: block;
+  border: 1px solid var(--border);
+  background: var(--paper-panel);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.carved-thumb:hover { border-color: var(--rule); }
+
+.carved-thumb img {
+  display: block;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  background: var(--hud-bg);
+}
+
+.carved-thumb-caption {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--muted);
+  padding: 4px 6px;
+}
+
+.error-banner {
+  font-family: var(--sans);
+  font-size: 12px;
+  background: #fdecea;
+  color: #c0392b;
+  border: 1px solid #f3c1bc;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}

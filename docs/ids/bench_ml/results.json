@@ -1,0 +1,374 @@
+{
+  "config": {
+    "seed": 7,
+    "n_per_class": 5,
+    "use_ml": true,
+    "split_t": 1437197141.5604255,
+    "grace_s": 10.0
+  },
+  "thresholds": {
+    "gps_jump": 30.0,
+    "gps_fused_div": 10.0,
+    "gps_vel_mismatch": 5.0457,
+    "gps_baro_alt": 10.0309,
+    "ekf_pos_var": 0.5591,
+    "att_ahrs2": 7.258,
+    "hud_alt": 3.0,
+    "hud_gs": 3.9367,
+    "hud_heading": 17.5145,
+    "batt_volt": 1.4835
+  },
+  "benign": {
+    "eval_hours": 0.339,
+    "false_positives": 0,
+    "fp_per_hour": 0.0,
+    "false_positive_alerts": []
+  },
+  "per_class": {
+    "gps_spoofing": {
+      "instances": 4,
+      "detected": 4,
+      "detected_any": 4,
+      "latencies": [
+        0.38,
+        4.005,
+        0.311,
+        3.903
+      ],
+      "false_positives": 0,
+      "false_positive_alerts": [],
+      "confusion": {
+        "gps_spoofing": {
+          "gps_spoofing": 4
+        }
+      },
+      "per_instance": [
+        {
+          "class": "gps_spoofing",
+          "variant": "jump",
+          "start": 1437197725.499532,
+          "detected": true,
+          "predicted": [
+            "gps_spoofing"
+          ]
+        },
+        {
+          "class": "gps_spoofing",
+          "variant": "drift",
+          "start": 1437197831.123556,
+          "detected": true,
+          "predicted": [
+            "gps_spoofing"
+          ]
+        },
+        {
+          "class": "gps_spoofing",
+          "variant": "jump",
+          "start": 1437197929.9629118,
+          "detected": true,
+          "predicted": [
+            "gps_spoofing"
+          ]
+        },
+        {
+          "class": "gps_spoofing",
+          "variant": "drift",
+          "start": 1437198062.396612,
+          "detected": true,
+          "predicted": [
+            "gps_spoofing"
+          ]
+        }
+      ]
+    },
+    "command_injection": {
+      "instances": 3,
+      "detected": 3,
+      "detected_any": 3,
+      "latencies": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "false_positives": 0,
+      "false_positive_alerts": [],
+      "confusion": {
+        "command_injection": {
+          "command_injection": 3
+        }
+      },
+      "per_instance": [
+        {
+          "class": "command_injection",
+          "variant": "rogue_node",
+          "start": 1437197785.581328,
+          "detected": true,
+          "predicted": [
+            "command_injection"
+          ]
+        },
+        {
+          "class": "command_injection",
+          "variant": "spoofed_gcs",
+          "start": 1437197916.8037078,
+          "detected": true,
+          "predicted": [
+            "command_injection"
+          ]
+        },
+        {
+          "class": "command_injection",
+          "variant": "rogue_node",
+          "start": 1437198107.84472,
+          "detected": true,
+          "predicted": [
+            "command_injection"
+          ]
+        }
+      ]
+    },
+    "telemetry_manipulation": {
+      "instances": 3,
+      "detected": 3,
+      "detected_any": 3,
+      "latencies": [
+        0.033,
+        1.836,
+        0.442
+      ],
+      "false_positives": 1,
+      "false_positive_alerts": [
+        {
+          "t_first": 1437197833.6690478,
+          "t_alert": 1437197833.6690478,
+          "attack_class": "telemetry_manipulation",
+          "severity": "high",
+          "score": 1.0,
+          "reasons": [
+            "hud_alt residual 25.00 > 3.00"
+          ],
+          "detectors": [
+            "residual:hud_alt"
+          ]
+        }
+      ],
+      "confusion": {
+        "telemetry_manipulation": {
+          "telemetry_manipulation": 3
+        }
+      },
+      "per_instance": [
+        {
+          "class": "telemetry_manipulation",
+          "variant": "hud",
+          "start": 1437197802.915464,
+          "detected": true,
+          "predicted": [
+            "telemetry_manipulation"
+          ]
+        },
+        {
+          "class": "telemetry_manipulation",
+          "variant": "attitude",
+          "start": 1437197897.525436,
+          "detected": true,
+          "predicted": [
+            "telemetry_manipulation"
+          ]
+        },
+        {
+          "class": "telemetry_manipulation",
+          "variant": "battery",
+          "start": 1437198057.498256,
+          "detected": true,
+          "predicted": [
+            "telemetry_manipulation"
+          ]
+        }
+      ]
+    },
+    "mavlink_anomaly": {
+      "instances": 4,
+      "detected": 4,
+      "detected_any": 4,
+      "latencies": [
+        0.052,
+        0.0,
+        0.15,
+        0.0
+      ],
+      "false_positives": 0,
+      "false_positive_alerts": [],
+      "confusion": {
+        "mavlink_anomaly": {
+          "anomaly": 2,
+          "telemetry_manipulation": 2,
+          "mavlink_anomaly": 4,
+          "gps_spoofing": 1
+        }
+      },
+      "per_instance": [
+        {
+          "class": "mavlink_anomaly",
+          "variant": "replay",
+          "start": 1437197718.159764,
+          "detected": true,
+          "predicted": [
+            "anomaly",
+            "mavlink_anomaly",
+            "telemetry_manipulation"
+          ]
+        },
+        {
+          "class": "mavlink_anomaly",
+          "variant": "rogue_heartbeat",
+          "start": 1437197840.130472,
+          "detected": true,
+          "predicted": [
+            "mavlink_anomaly"
+          ]
+        },
+        {
+          "class": "mavlink_anomaly",
+          "variant": "replay",
+          "start": 1437197961.641408,
+          "detected": true,
+          "predicted": [
+            "anomaly",
+            "gps_spoofing",
+            "mavlink_anomaly",
+            "telemetry_manipulation"
+          ]
+        },
+        {
+          "class": "mavlink_anomaly",
+          "variant": "rogue_heartbeat",
+          "start": 1437198068.027716,
+          "detected": true,
+          "predicted": [
+            "mavlink_anomaly"
+          ]
+        }
+      ]
+    },
+    "dos": {
+      "instances": 3,
+      "detected": 3,
+      "detected_any": 3,
+      "latencies": [
+        0.333,
+        0.34,
+        0.333
+      ],
+      "false_positives": 0,
+      "false_positive_alerts": [],
+      "confusion": {
+        "dos": {
+          "dos": 3,
+          "mavlink_anomaly": 3,
+          "anomaly": 3
+        }
+      },
+      "per_instance": [
+        {
+          "class": "dos",
+          "variant": "rogue_flood",
+          "start": 1437197794.801092,
+          "detected": true,
+          "predicted": [
+            "anomaly",
+            "dos",
+            "mavlink_anomaly"
+          ]
+        },
+        {
+          "class": "dos",
+          "variant": "gcs_spoof_flood",
+          "start": 1437197929.101992,
+          "detected": true,
+          "predicted": [
+            "anomaly",
+            "dos",
+            "mavlink_anomaly"
+          ]
+        },
+        {
+          "class": "dos",
+          "variant": "rogue_flood",
+          "start": 1437198051.727788,
+          "detected": true,
+          "predicted": [
+            "anomaly",
+            "dos",
+            "mavlink_anomaly"
+          ]
+        }
+      ]
+    },
+    "firmware_integrity": {
+      "instances": 3,
+      "detected": 3,
+      "detected_any": 3,
+      "latencies": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "false_positives": 0,
+      "false_positive_alerts": [],
+      "confusion": {
+        "firmware_integrity": {
+          "firmware_integrity": 3
+        }
+      },
+      "per_instance": [
+        {
+          "class": "firmware_integrity",
+          "variant": "banner",
+          "start": 1437197767.4628558,
+          "detected": true,
+          "predicted": [
+            "firmware_integrity"
+          ]
+        },
+        {
+          "class": "firmware_integrity",
+          "variant": "param",
+          "start": 1437197877.681552,
+          "detected": true,
+          "predicted": [
+            "firmware_integrity"
+          ]
+        },
+        {
+          "class": "firmware_integrity",
+          "variant": "banner",
+          "start": 1437198032.550812,
+          "detected": true,
+          "predicted": [
+            "firmware_integrity"
+          ]
+        }
+      ]
+    }
+  },
+  "overall": {
+    "instances": 20,
+    "detection_accuracy": 1.0,
+    "detection_rate_any_class": 1.0,
+    "latency_p50_s": 0.15,
+    "latency_p95_s": 4.005,
+    "latency_max_s": 4.005
+  },
+  "compute": {
+    "messages": 163851,
+    "flight_s": 2443.8,
+    "log_msg_rate_hz": 67.0,
+    "mean_us_per_msg": 43.25,
+    "p99_us_per_msg": 2528.8,
+    "max_us_per_msg": 4658.5,
+    "throughput_msgs_per_s": 22916,
+    "cpu_pct_of_one_core_at_log_rate": 0.29,
+    "peak_rss_mb_incl_loaded_log": 285.9
+  }
+}

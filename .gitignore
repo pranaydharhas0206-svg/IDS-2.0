@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+cases/
+.pytest_cache/
+.superpowers/
+submission/
+
+# Secrets
+.env

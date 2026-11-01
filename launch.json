@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "IDS: Replay bundled flight",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ids",
+      "args": ["replay", "sample_data/ardupilot_sample.tlog", "--profile", "profile"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "IDS: Live SITL router",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ids",
+      "args": ["live", "--master", "tcp:127.0.0.1:5760", "--gcs", "udpin:0.0.0.0:14550", "--profile", "profile", "--log", "run/alerts.jsonl"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

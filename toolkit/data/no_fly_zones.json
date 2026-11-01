@@ -1,0 +1,63 @@
+[
+  {
+    "name": "John F. Kennedy International Airport (JFK) ATZ",
+    "type": "circle",
+    "category": "airport_atz",
+    "center_lat": 40.6413,
+    "center_lon": -73.7781,
+    "radius_m": 5000,
+    "source_note": "Approximate ATZ derived from public airport coordinates; illustrative radius, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  },
+  {
+    "name": "London Heathrow Airport (LHR) ATZ",
+    "type": "circle",
+    "category": "airport_atz",
+    "center_lat": 51.4700,
+    "center_lon": -0.4543,
+    "radius_m": 5000,
+    "source_note": "Approximate ATZ derived from public airport coordinates; illustrative radius, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  },
+  {
+    "name": "Tokyo Haneda Airport (HND) ATZ",
+    "type": "circle",
+    "category": "airport_atz",
+    "center_lat": 35.5494,
+    "center_lon": 139.7798,
+    "radius_m": 5000,
+    "source_note": "Approximate ATZ derived from public airport coordinates; illustrative radius, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  },
+  {
+    "name": "Dubai International Airport (DXB) ATZ",
+    "type": "circle",
+    "category": "airport_atz",
+    "center_lat": 25.2532,
+    "center_lon": 55.3657,
+    "radius_m": 5000,
+    "source_note": "Approximate ATZ derived from public airport coordinates; illustrative radius, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  },
+  {
+    "name": "Paris Charles de Gaulle Airport (CDG) Approximate Boundary",
+    "type": "polygon",
+    "category": "airport_boundary",
+    "points": [
+      [49.025, 2.520],
+      [49.025, 2.580],
+      [48.995, 2.590],
+      [48.985, 2.545],
+      [49.000, 2.505]
+    ],
+    "source_note": "Approximate boundary derived from public airport coordinates; illustrative shape, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  },
+  {
+    "name": "Los Angeles International Airport (LAX) Approximate Boundary",
+    "type": "polygon",
+    "category": "airport_boundary",
+    "points": [
+      [33.965, -118.435],
+      [33.965, -118.385],
+      [33.920, -118.385],
+      [33.920, -118.435]
+    ],
+    "source_note": "Approximate boundary derived from public airport coordinates; illustrative shape, not an official published no-fly-zone boundary. Compiled 2026-09-18."
+  }
+]
